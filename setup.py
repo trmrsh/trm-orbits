@@ -7,7 +7,7 @@ from Cython.Build import cythonize
 orbits = [Extension(
     'trm.orbits.orbits',
     [os.path.join('trm','orbits','orbits.pyx')],
-    libraries=["m"],
+#    libraries=["m"],
     include_dirs=[numpy.get_include()],
     extra_compile_args=["-fno-strict-aliasing"],
     define_macros   = [('MAJOR_VERSION', '0'),
