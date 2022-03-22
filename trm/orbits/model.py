@@ -17,25 +17,25 @@ def position(nu,OMEGA,omega,i,e,a):
 
     Arguments::
 
-      nu    : (float / array)
+      nu : float | array
          true anomaly or anomalies (radians)
 
-      OMEGA : (float)
+      OMEGA : float
          longitude of ascending node (radians)
 
-      omega : (float)
+      omega : float
          argument of periapsis (radians)
 
-      i     : (float)
+      i : float
          orbital inclination (radians)
 
-      e     : (float)
+      e : float
          eccentricity
 
-      a     : (float)
-         semi-major axis.
+      a : float
+         semi-major axis
 
-    Returns (x,y,z) position(s). x, y and z are arrays if nu is an array or
+    Returns (x,y,z) position(s) in same units as a. x, y and z are arrays if nu is an array or
     floats if nu is a float.
 
     """
@@ -55,25 +55,25 @@ def velocity(nu,OMEGA,omega,i,e,a,P):
 
     Arguments::
 
-      nu    : (float / array)
+      nu : float | array
          true anomaly or anomalies (radians)
 
-      OMEGA : (float)
+      OMEGA : float
          longitude of ascending node (radians)
 
-      omega : (float)
+      omega : float
          argument of periapsis (radians)
 
-      i     : (float)
+      i : float
          orbital inclination (radians)
 
-      e     : (float)
+      e : float
          eccentricity
 
-      a     : (float)
+      a : float
          semi-major axis [AU]
 
-      P     : (float)
+      P : float
          orbital period [days].
 
     Returns (vx,vy,vz) velocity(s) in AU / day. vx, vy and vz are arrays if nu is
@@ -97,37 +97,40 @@ def velocity(nu,OMEGA,omega,i,e,a,P):
     return (vx, vy, vz)
 
 def position2(nu,OMEGA,omega,i,e,a1,a2):
-    """Returns the (x,y,z) position(s) in an observer-centred Cartesian system
-    equivalent to a particular orbit. The z-axis points towards the observer,
-    the x-axis parallel to the line of nodes and the y-axis follows a
-    right-handed convention relative to the other two. This version returns
-    two sets of values for two stars in opposite sides of the same orbit (slightly
-    faster than computing each one separately). "omega" is assumed to apply to a1.
+    """Returns the (x,y,z) position(s) in an observer-centred Cartesian
+    system equivalent to a particular orbit. The z-axis points towards
+    the observer, the x-axis parallel to the line of nodes and the
+    y-axis follows a right-handed convention relative to the other
+    two. This version returns two sets of values for two stars in
+    opposite sides of the same orbit (slightly faster than computing
+    each one separately). "omega" is assumed to apply to a1.
 
     Arguments::
 
-      nu    : (float / array)
+      nu : float | array
          true anomaly or anomalies (radians)
 
-      OMEGA : (float)
+      OMEGA : float
          longitude of ascending node (radians)
 
-      omega : (float)
+      omega : float
          argument of periapsis (radians)
 
-      i     : (float)
+      i : float
          orbital inclination (radians)
 
-      e     : (float)
+      e : float
          eccentricity
 
-      a1    : (float)
+      a1 : float
          semi-major axis of star corresponding to omega
 
-      a2    : (float)
-         semi-major axis of other star, which effectively has omega --> omega + pi
+      a2 : float
+         semi-major axis of other star, which effectively has
+         omega --> omega + pi
 
     Returns (x1,y1,z1,x2,y2,z2)
+
     """
 
     omf = nu + omega
@@ -145,28 +148,29 @@ def velocity2(nu,OMEGA,omega,i,e,a1,a2,n):
 
     Arguments::
 
-      nu    : (float / array)
+      nu : float | array
          true anomaly or anomalies (radians)
 
-      OMEGA : (float)
+      OMEGA : float
          longitude of ascending node (radians)
 
-      omega : (float)
+      omega : float
          argument of periapsis (radians)
 
-      i     : (float)
+      i : float
          orbital inclination (radians)
 
-      e     : (float)
+      e : float
          eccentricity
 
-      a1    : (float)
+      a1 : float
          semi-major axis of star corresponding to omega [AU]
 
-      a2    : (float)
-         semi-major axis of other star, which effectively has omega --> omega + pi [AU]
+      a2 : float
+         semi-major axis of other star, which effectively has
+         omega --> omega + pi [AU]
 
-      n     : (float)
+      n : float
          orbital angular velocity [rad/day]
 
     Returns (vx1,vy1,vz1,vx2,vy2,vz2) velocities in AU/day
@@ -204,61 +208,61 @@ def triplePos(t, a1, a2, a3, ab, eb1, eb2,
 
     Arguments::
 
-       t       : (array)
+       t : array
            times [days]
 
-       a1      : (float)
+       a1 : float
            semi-major axis of star 1 around binary 1's CoM [solar]
 
-       a2      : (float)
+       a2 : float
            semi-major axis of star 2 around binary 1's CoM [solar]
 
-       a3      : (float)
+       a3 : float
            semi-major axis of star 3 around system CoM [solar]
 
-       ab      : (float)
+       ab : float
            semi-major axis of binary 1 rel. to system CoM [solar]
 
-       eb1     : (float)
+       eb1 : float
            eccentricity of binary 1
 
-       eb2     : (float)
+       eb2 : float
            eccentricity of binary 2
 
-       omegab1 : (float)
-           argument of periapsis of binary 1 [degrees]
+       omegab1 : float
+           argument of periapsis of binary 1 [radians]
 
-       omegab2 : (float)
-           argument of periapsis of binary 2 [degrees]
+       omegab2 : float
+           argument of periapsis of binary 2 [radians]
 
-       Pb1     : (float)
+       Pb1 : float
            period of binary 1 [days]
 
-       Pb2     : (float)
+       Pb2 : float
            period of binary 2 [days]
 
-       ib1     : (float)
-           inclination of binary 1 [degrees]
+       ib1 : float
+           inclination of binary 1 [radians]
 
-       ib2     : (float)
-           inclination of binary 2 [degrees]
+       ib2 : float
+           inclination of binary 2 [radians]
 
-       OMEGAb1 : (float)
-           longitude of ascending node of binary 1 [degrees]
+       OMEGAb1 : float
+           longitude of ascending node of binary 1 [radians]
 
-       OMEGAb2 : (float)
-           longitude of ascending node of binary 2 [degrees]
+       OMEGAb2 : float
+           longitude of ascending node of binary 2 [radians]
 
-       t0b1    : (float)
+       t0b1 : float
            zeropoint of binary 1 [days]
 
-       t0b2    : (float)
+       t0b2 : float
            zeropoint of binary 2 [days]
 
-       ttype  : (int)
+       ttype : int
            1 == t0 is time at periastron, 2 == t0 is time of eclipse
 
-       acc    : (float)
+       acc : float
            Accuracy parameter for solving Kepler's equation
 
     Returns ((x1,y1,z1),(x2,y2,z2),(x3,y3,z3)) where each of x1,y1,z1,x2 etc
@@ -361,86 +365,86 @@ def quad1Pos(t, a1, a2, a3, a4, ab1, ab2, eb1, eb2, eb3,
 
     Arguments::
 
-       t       : (array)
+       t : array
            times [days]
 
-       a1      : (float)
+       a1 : float
            semi-major axis of star 1 around binary 1's CoM [solar]
 
-       a2      : (float)
+       a2 : float
            semi-major axis of star 2 around binary 1's CoM [solar]
 
-       a3      : (float)
+       a3 : float
            semi-major axis of star 3 around system CoM [solar]
 
-       a4      : (float)
+       a4 : float
            semi-major axis of star 4 around binary 2's CoM [solar]
 
-       ab1     : (float)
+       ab1 : float
            semi-major axis of binary 1 rel. to binary 2's CoM [solar]
 
-       ab2     : (float)
+       ab2 : float
            semi-major axis of binary 2 rel. to system CoM [solar]
 
-       eb1     : (float)
+       eb1 : float
            eccentricity of binary 1
 
-       eb2     : (float)
+       eb2 : float
            eccentricity of binary 2
 
-       eb3     : (float)
+       eb3 : float
            eccentricity of binary 3
 
-       omegab1 : (float)
-           argument of periapsis of binary 1 [degrees]
+       omegab1 : float
+           argument of periapsis of binary 1 [rad]
 
-       omegab2 : (float)
-           argument of periapsis of binary 2 [degrees]
+       omegab2 : float
+           argument of periapsis of binary 2 [rad]
 
-       omegab3 : (float)
-           argument of periapsis of the ((1+2)+4) / 3 orbit [degrees]
+       omegab3 : float
+           argument of periapsis of the ((1+2)+4) / 3 orbit [rad]
 
-       Pb1     : (float)
+       Pb1 : float
            period of binary 1 [days]
 
-       Pb2     : (float)
+       Pb2 : float
            period of binary 2 [days]
 
-       Pb3     : (float)
+       Pb3 : float
            period of binary 3 [days]
 
-       ib1     : (float)
-           inclination of binary 1 [degrees]
+       ib1 : float
+           inclination of binary 1 [rad]
 
-       ib2     : (float)
-           inclination of binary 2 [degrees]
+       ib2 : float
+           inclination of binary 2 [rad]
 
-       ib3     : (float)
-           inclination of binary 3 [degrees]
+       ib3 : float
+           inclination of binary 3 [rad]
 
-       OMEGAb1 : (float)
-           longitude of ascending node of binary 1 [degrees]
+       OMEGAb1 : float
+           longitude of ascending node of binary 1 [rad]
 
-       OMEGAb2 : (float)
-           longitude of ascending node of binary 2 [degrees]
+       OMEGAb2 : float
+           longitude of ascending node of binary 2 [rad]
 
-       OMEGAb3 : (float)
-           longitude of ascending node of binary 3 [degrees]
+       OMEGAb3 : float
+           longitude of ascending node of binary 3 [rad]
 
-       t0b1    : (float)
+       t0b1 : float
            zeropoint of binary 1 [days]
 
-       t0b2    : (float)
+       t0b2 : float
            zeropoint of binary 2 [days]
 
-       t0b3     : (float)
+       t0b3 : float
            zeropoint of binary 3 [days]
 
 
-       ttype  : (int)
+       ttype : int
            1 == t0 is time at periastron, 2 == t0 is time of eclipse
 
-       acc    : (float)
+       acc : float
            Accuracy parameter for solving Kepler's equation
 
     Returns ((x1,y1,z1),(x2,y2,z2),(x3,y3,z3),(x4,y4,z4)) where each of
@@ -456,7 +460,8 @@ def quad1Pos(t, a1, a2, a3, a4, ab1, ab2, eb1, eb2, eb3,
     # speed of light, AU/day
     c = 173.1446327
 
-    # offsets to the true anomolies if T0 defined by conjunction phases.
+    # offsets to the mean anomolies if T0 defined by conjunction
+    # rather pericentre phases.
     mzerob1 = 0.
     mzerob2 = 0.
     mzerob3 = 0.
@@ -493,8 +498,9 @@ def quad1Pos(t, a1, a2, a3, a4, ab1, ab2, eb1, eb2, eb3,
     xb2,yb2,zb2,x3,y3,z3 = position2(nub3,OMEGAb3,omegab3,ib3,eb3,ab2,a3)
     vxb2,vyb2,vzb2,vx3,vy3,vz3 = velocity2(nub3,OMEGAb3,omegab3,ib3,eb3,ab2,a3,nb3)
 
-    # Correct positions and velocities of stars 1, 2 and 4 so that they are with respect
-    # to an inertial frame, i.e. the system CoM (star 3 already is)
+    # Correct positions and velocities of stars 1, 2 and 4 so that
+    # they are with respect to an inertial frame, i.e. the system CoM
+    # (star 3 already is)
 
     # First get total offset to b1
     xb1 += xb2
@@ -528,10 +534,10 @@ def quad1Pos(t, a1, a2, a3, a4, ab1, ab2, eb1, eb2, eb3,
     vy4 += vyb2
     vz4 += vzb2
 
-    # Now have inertial frame positions and velocities of all stars in AU and
-    # AU / day. If z > 0, then a star is closer to Earth than the system CoM,
-    # so we see it 'advanced' relative to the CoM by z/c, so we add v*z/c to the
-    # positions.
+    # Now have inertial frame positions and velocities of all stars in
+    # AU and AU / day. If z > 0, then a star is closer to Earth than
+    # the system CoM, so we see it 'advanced' relative to the CoM by
+    # z/c, so we add v*z/c to the positions.
 
     ltt = z1/c
     x1 += vx1*ltt
