@@ -5,8 +5,8 @@ from os import path
 from Cython.Build import cythonize
 
 orbits = [Extension(
-    'trm.orbits.orbits',
-    [os.path.join('trm','orbits','orbits.pyx')],
+    'trm.orbits._orbits',
+    [os.path.join('trm','orbits','_orbits.pyx')],
 #    libraries=["m"],
     include_dirs=[numpy.get_include()],
     extra_compile_args=["-fno-strict-aliasing"],
